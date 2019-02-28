@@ -16,4 +16,13 @@ function BaseControl( { id, label, help, className, children } ) {
 	);
 }
 
+BaseControl.VisualLabel = ( { className, children } ) => {
+	className = classnames( 'components-base-control__label', className );
+	return (
+		<div className={ className }>
+			{ children }
+		</div>
+	);
+};
+
 export default BaseControl;

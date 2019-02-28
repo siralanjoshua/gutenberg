@@ -1,5 +1,9 @@
 ## 7.2.0 (Unreleased)
 
+### New Features
+
+- Added a new `BaseControl.VisualLabel` component.
+
 ### Improvements
 
 - Make `RangeControl` validation rely on the `checkValidity` provided by the browsers instead of using our own validation.
