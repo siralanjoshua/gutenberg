@@ -90,6 +90,8 @@ fi
 # Configure site constants.
 echo -e $(status_message "Configuring site constants...")
 docker-compose $DOCKER_COMPOSE_FILE_OPTIONS run --rm -u 33 $CLI config set WP_DEBUG true --quiet
+WP_DEBUG=$(docker-compose $DOCKER_COMPOSE_FILE_OPTIONS run -T --rm -u 33 $CLI config get WP_DEBUG)
+echo -e $(status_message "WP_DEBUG: $WP_DEBUG...")
 
 # Activate Gutenberg.
 echo -e $(status_message "Activating Gutenberg...")
