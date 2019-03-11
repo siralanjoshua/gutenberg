@@ -16,7 +16,7 @@ npm install @wordpress/e2e-test-utils --save-dev
 
 ### activatePlugin
 
-[src/index.js#L1-L1](src/index.js#L1-L1)
+[src/index.js#L2-L2](src/index.js#L2-L2)
 
 Activates an installed plugin.
 
@@ -26,7 +26,7 @@ Activates an installed plugin.
 
 ### arePrePublishChecksEnabled
 
-[src/index.js#L2-L2](src/index.js#L2-L2)
+[src/index.js#L3-L3](src/index.js#L3-L3)
 
 Verifies if publish checks are enabled.
 
@@ -36,19 +36,19 @@ Verifies if publish checks are enabled.
 
 ### clearLocalStorage
 
-[src/index.js#L3-L3](src/index.js#L3-L3)
+[src/index.js#L4-L4](src/index.js#L4-L4)
 
 Clears the local storage.
 
 ### clickBlockAppender
 
-[src/index.js#L4-L4](src/index.js#L4-L4)
+[src/index.js#L5-L5](src/index.js#L5-L5)
 
 Clicks the default block appender.
 
 ### clickBlockToolbarButton
 
-[src/index.js#L5-L5](src/index.js#L5-L5)
+[src/index.js#L6-L6](src/index.js#L6-L6)
 
 Clicks a block toolbar button.
 
@@ -58,7 +58,7 @@ Clicks a block toolbar button.
 
 ### clickButton
 
-[src/index.js#L6-L6](src/index.js#L6-L6)
+[src/index.js#L7-L7](src/index.js#L7-L7)
 
 Clicks a button based on the text on the button.
 
@@ -68,7 +68,7 @@ Clicks a button based on the text on the button.
 
 ### clickOnCloseModalButton
 
-[src/index.js#L7-L7](src/index.js#L7-L7)
+[src/index.js#L8-L8](src/index.js#L8-L8)
 
 Click on the close button of an open modal.
 
@@ -78,7 +78,7 @@ Click on the close button of an open modal.
 
 ### clickOnMoreMenuItem
 
-[src/index.js#L8-L8](src/index.js#L8-L8)
+[src/index.js#L9-L9](src/index.js#L9-L9)
 
 Clicks on More Menu item, searches for the button with the text provided and clicks it.
 
@@ -88,7 +88,7 @@ Clicks on More Menu item, searches for the button with the text provided and cli
 
 ### createEmbeddingMatcher
 
-[src/index.js#L48-L48](src/index.js#L48-L48)
+[src/index.js#L50-L50](src/index.js#L50-L50)
 
 Creates a function to determine if a request is embedding a certain URL.
 
@@ -102,7 +102,7 @@ Creates a function to determine if a request is embedding a certain URL.
 
 ### createJSONResponse
 
-[src/index.js#L48-L48](src/index.js#L48-L48)
+[src/index.js#L50-L50](src/index.js#L50-L50)
 
 Respond to a request with a JSON response.
 
@@ -116,7 +116,7 @@ Respond to a request with a JSON response.
 
 ### createNewPost
 
-[src/index.js#L9-L9](src/index.js#L9-L9)
+[src/index.js#L10-L10](src/index.js#L10-L10)
 
 Creates new post.
 
@@ -126,7 +126,7 @@ Creates new post.
 
 ### createURL
 
-[src/index.js#L10-L10](src/index.js#L10-L10)
+[src/index.js#L11-L11](src/index.js#L11-L11)
 
 Creates new URL by parsing base URL, WPPath and query string.
 
@@ -141,7 +141,7 @@ Creates new URL by parsing base URL, WPPath and query string.
 
 ### createURLMatcher
 
-[src/index.js#L48-L48](src/index.js#L48-L48)
+[src/index.js#L50-L50](src/index.js#L50-L50)
 
 Creates a function to determine if a request is calling a URL with the substring present.
 
@@ -155,7 +155,7 @@ Creates a function to determine if a request is calling a URL with the substring
 
 ### deactivatePlugin
 
-[src/index.js#L11-L11](src/index.js#L11-L11)
+[src/index.js#L12-L12](src/index.js#L12-L12)
 
 Deactivates an active plugin.
 
@@ -165,26 +165,26 @@ Deactivates an active plugin.
 
 ### disablePrePublishChecks
 
-[src/index.js#L12-L12](src/index.js#L12-L12)
+[src/index.js#L13-L13](src/index.js#L13-L13)
 
 Disables Pre-publish checks.
 
 ### enablePageDialogAccept
 
-[src/index.js#L13-L13](src/index.js#L13-L13)
+[src/index.js#L14-L14](src/index.js#L14-L14)
 
 Enables even listener which accepts a page dialog which
 may appear when navigating away from Gutenberg.
 
 ### enablePrePublishChecks
 
-[src/index.js#L14-L14](src/index.js#L14-L14)
+[src/index.js#L15-L15](src/index.js#L15-L15)
 
 Enables Pre-publish checks.
 
 ### ensureSidebarOpened
 
-[src/index.js#L15-L15](src/index.js#L15-L15)
+[src/index.js#L16-L16](src/index.js#L16-L16)
 
 Verifies that the edit post sidebar is opened, and if it is not, opens it.
 
@@ -194,7 +194,7 @@ Verifies that the edit post sidebar is opened, and if it is not, opens it.
 
 ### findSidebarPanelToggleButtonWithTitle
 
-[src/index.js#L16-L16](src/index.js#L16-L16)
+[src/index.js#L17-L17](src/index.js#L17-L17)
 
 Finds a sidebar panel with the provided title.
 
@@ -208,7 +208,7 @@ Finds a sidebar panel with the provided title.
 
 ### findSidebarPanelWithTitle
 
-[src/index.js#L17-L17](src/index.js#L17-L17)
+[src/index.js#L18-L18](src/index.js#L18-L18)
 
 Finds the button responsible for toggling the sidebar panel with the provided title.
 
@@ -222,7 +222,7 @@ Finds the button responsible for toggling the sidebar panel with the provided ti
 
 ### getAllBlocks
 
-[src/index.js#L18-L18](src/index.js#L18-L18)
+[src/index.js#L19-L19](src/index.js#L19-L19)
 
 Returns an array with all blocks; Equivalent to calling wp.data.select( 'core/editor' ).getBlocks();
 
@@ -232,7 +232,7 @@ Returns an array with all blocks; Equivalent to calling wp.data.select( 'core/ed
 
 ### getAvailableBlockTransforms
 
-[src/index.js#L19-L19](src/index.js#L19-L19)
+[src/index.js#L20-L20](src/index.js#L20-L20)
 
 Returns an array of strings with all block titles,
 that the current selected block can be transformed into.
@@ -243,7 +243,7 @@ that the current selected block can be transformed into.
 
 ### getEditedPostContent
 
-[src/index.js#L20-L20](src/index.js#L20-L20)
+[src/index.js#L21-L21](src/index.js#L21-L21)
 
 Returns a promise which resolves with the edited post content (HTML string).
 
@@ -253,7 +253,7 @@ Returns a promise which resolves with the edited post content (HTML string).
 
 ### hasBlockSwitcher
 
-[src/index.js#L21-L21](src/index.js#L21-L21)
+[src/index.js#L22-L22](src/index.js#L22-L22)
 
 Returns a boolean indicating if the current selected block has a block switcher or not.
 
@@ -263,7 +263,7 @@ Returns a boolean indicating if the current selected block has a block switcher 
 
 ### insertBlock
 
-[src/index.js#L22-L22](src/index.js#L22-L22)
+[src/index.js#L23-L23](src/index.js#L23-L23)
 
 Opens the inserter, searches for the given term, then selects the first
 result that appears.
@@ -275,7 +275,7 @@ result that appears.
 
 ### installPlugin
 
-[src/index.js#L23-L23](src/index.js#L23-L23)
+[src/index.js#L24-L24](src/index.js#L24-L24)
 
 Installs a plugin from the WP.org repository.
 
@@ -286,7 +286,7 @@ Installs a plugin from the WP.org repository.
 
 ### isCurrentURL
 
-[src/index.js#L24-L24](src/index.js#L24-L24)
+[src/index.js#L25-L25](src/index.js#L25-L25)
 
 Checks if current URL is a WordPress path.
 
@@ -301,7 +301,7 @@ Checks if current URL is a WordPress path.
 
 ### isInDefaultBlock
 
-[src/index.js#L25-L25](src/index.js#L25-L25)
+[src/index.js#L26-L26](src/index.js#L26-L26)
 
 Checks if the block that is focused is the default block.
 
@@ -311,7 +311,7 @@ Checks if the block that is focused is the default block.
 
 ### loginUser
 
-[src/index.js#L26-L26](src/index.js#L26-L26)
+[src/index.js#L27-L27](src/index.js#L27-L27)
 
 Performs log in with specified username and password.
 
@@ -322,7 +322,7 @@ Performs log in with specified username and password.
 
 ### mockOrTransform
 
-[src/index.js#L48-L48](src/index.js#L48-L48)
+[src/index.js#L50-L50](src/index.js#L50-L50)
 
 Mocks a request with the supplied mock object, or allows it to run with an optional transform, based on the
 deserialised JSON response for the request.
@@ -339,26 +339,26 @@ deserialised JSON response for the request.
 
 ### observeFocusLoss
 
-[src/index.js#L27-L27](src/index.js#L27-L27)
+[src/index.js#L28-L28](src/index.js#L28-L28)
 
 Binds to the document on page load which throws an error if a `focusout`
 event occurs without a related target (i.e. focus loss).
 
 ### openDocumentSettingsSidebar
 
-[src/index.js#L28-L28](src/index.js#L28-L28)
+[src/index.js#L29-L29](src/index.js#L29-L29)
 
 Clicks on the button in the header which opens Document Settings sidebar when it is closed.
 
 ### openPublishPanel
 
-[src/index.js#L29-L29](src/index.js#L29-L29)
+[src/index.js#L30-L30](src/index.js#L30-L30)
 
 Opens the publish panel.
 
 ### pressKeyTimes
 
-[src/index.js#L30-L30](src/index.js#L30-L30)
+[src/index.js#L31-L31](src/index.js#L31-L31)
 
 Presses the given keyboard key a number of times in sequence.
 
@@ -373,7 +373,7 @@ Presses the given keyboard key a number of times in sequence.
 
 ### pressKeyWithModifier
 
-[src/index.js#L31-L31](src/index.js#L31-L31)
+[src/index.js#L32-L32](src/index.js#L32-L32)
 
 Performs a key press with modifier (Shift, Control, Meta, Alt), where each modifier
 is normalized to platform-specific modifier.
@@ -385,7 +385,7 @@ is normalized to platform-specific modifier.
 
 ### publishPost
 
-[src/index.js#L32-L32](src/index.js#L32-L32)
+[src/index.js#L33-L33](src/index.js#L33-L33)
 
 Publishes the post, resolving once the request is complete (once a notice
 is displayed).
@@ -396,7 +396,7 @@ is displayed).
 
 ### publishPostWithPrePublishChecksDisabled
 
-[src/index.js#L33-L33](src/index.js#L33-L33)
+[src/index.js#L34-L34](src/index.js#L34-L34)
 
 Publishes the post without the pre-publish checks,
 resolving once the request is complete (once a notice is displayed).
@@ -407,7 +407,7 @@ resolving once the request is complete (once a notice is displayed).
 
 ### saveDraft
 
-[src/index.js#L34-L34](src/index.js#L34-L34)
+[src/index.js#L35-L35](src/index.js#L35-L35)
 
 Saves the post as a draft, resolving once the request is complete (once the
 "Saved" indicator is displayed).
@@ -418,7 +418,7 @@ Saves the post as a draft, resolving once the request is complete (once the
 
 ### searchForBlock
 
-[src/index.js#L35-L35](src/index.js#L35-L35)
+[src/index.js#L36-L36](src/index.js#L36-L36)
 
 Search for block in the global inserter
 
@@ -426,9 +426,19 @@ Search for block in the global inserter
 
 -   **searchTerm** `string`: The text to search the inserter for.
 
+### selectAllBlocks
+
+[src/index.js#L37-L37](src/index.js#L37-L37)
+
+Selects all blocks present in the block editor.
+
+**Returns**
+
+`Promise`: Promise resolving once active element selected.
+
 ### selectBlockByClientId
 
-[src/index.js#L36-L36](src/index.js#L36-L36)
+[src/index.js#L38-L38](src/index.js#L38-L38)
 
 Given the clientId of a block, selects the block on the editor.
 
@@ -438,7 +448,7 @@ Given the clientId of a block, selects the block on the editor.
 
 ### setBrowserViewport
 
-[src/index.js#L37-L37](src/index.js#L37-L37)
+[src/index.js#L39-L39](src/index.js#L39-L39)
 
 Sets browser viewport to specified type.
 
@@ -448,7 +458,7 @@ Sets browser viewport to specified type.
 
 ### setPostContent
 
-[src/index.js#L38-L38](src/index.js#L38-L38)
+[src/index.js#L40-L40](src/index.js#L40-L40)
 
 Sets code editor content
 
@@ -462,7 +472,7 @@ Sets code editor content
 
 ### setUpResponseMocking
 
-[src/index.js#L48-L48](src/index.js#L48-L48)
+[src/index.js#L50-L50](src/index.js#L50-L50)
 
 Sets up mock checks and responses. Accepts a list of mock settings with the following properties:
 
@@ -493,7 +503,7 @@ If none of the mock settings match the request, the request is allowed to contin
 
 ### switchEditorModeTo
 
-[src/index.js#L39-L39](src/index.js#L39-L39)
+[src/index.js#L41-L41](src/index.js#L41-L41)
 
 Switches editor mode.
 
@@ -503,21 +513,21 @@ Switches editor mode.
 
 ### switchUserToAdmin
 
-[src/index.js#L40-L40](src/index.js#L40-L40)
+[src/index.js#L42-L42](src/index.js#L42-L42)
 
 Switches the current user to the admin user (if the user
 running the test is not already the admin user).
 
 ### switchUserToTest
 
-[src/index.js#L41-L41](src/index.js#L41-L41)
+[src/index.js#L43-L43](src/index.js#L43-L43)
 
 Switches the current user to whichever user we should be
 running the tests as (if we're not already that user).
 
 ### toggleScreenOption
 
-[src/index.js#L42-L42](src/index.js#L42-L42)
+[src/index.js#L44-L44](src/index.js#L44-L44)
 
 Toggles the screen option with the given label.
 
@@ -528,7 +538,7 @@ Toggles the screen option with the given label.
 
 ### transformBlockTo
 
-[src/index.js#L43-L43](src/index.js#L43-L43)
+[src/index.js#L45-L45](src/index.js#L45-L45)
 
 Converts editor's block type.
 
@@ -538,7 +548,7 @@ Converts editor's block type.
 
 ### uninstallPlugin
 
-[src/index.js#L44-L44](src/index.js#L44-L44)
+[src/index.js#L46-L46](src/index.js#L46-L46)
 
 Uninstalls a plugin.
 
@@ -548,7 +558,7 @@ Uninstalls a plugin.
 
 ### visitAdminPage
 
-[src/index.js#L45-L45](src/index.js#L45-L45)
+[src/index.js#L47-L47](src/index.js#L47-L47)
 
 Visits admin page; if user is not logged in then it logging in it first, then visits admin page.
 
@@ -559,7 +569,7 @@ Visits admin page; if user is not logged in then it logging in it first, then vi
 
 ### waitForWindowDimensions
 
-[src/index.js#L46-L46](src/index.js#L46-L46)
+[src/index.js#L48-L48](src/index.js#L48-L48)
 
 Function that waits until the page viewport has the required dimensions.
 It is being used to address a problem where after using setViewport the execution may continue,
