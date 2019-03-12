@@ -18,6 +18,7 @@ import { BlockEditorProvider } from '@wordpress/block-editor';
  */
 import transformStyles from '../../editor-styles';
 import { mediaUpload } from '../../utils';
+import ReusableBlocksButtons from '../reusable-blocks-buttons';
 
 class EditorProvider extends Component {
 	constructor( props ) {
@@ -134,6 +135,7 @@ class EditorProvider extends Component {
 				settings={ editorSettings }
 			>
 				{ children }
+				<ReusableBlocksButtons />
 			</BlockEditorProvider>
 		);
 	}
