@@ -25,14 +25,6 @@ export function normaliseFormats( value ) {
 
 				if ( isFormatEqual( format, previousFormat ) ) {
 					newFormatsAtIndex[ formatIndex ] = previousFormat;
-
-					if ( value.activeFormats ) {
-						const activeIndex = value.activeFormats.indexOf( format );
-
-						if ( activeIndex !== -1 ) {
-							value.activeFormats[ activeIndex ] = previousFormat;
-						}
-					}
 				}
 			} );
 

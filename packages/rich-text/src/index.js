@@ -34,4 +34,4 @@ export { unregisterFormatType } from './unregister-format-type';
 export { indentListItems } from './indent-list-items';
 export { outdentListItems } from './outdent-list-items';
 export { changeListType } from './change-list-type';
-export { normaliseFormats as __unstableNormaliseFormats } from './normalise-formats';
+export { isFormatEqual as __unstableIsFormatEqual } from './is-format-equal';
