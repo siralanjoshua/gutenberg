@@ -394,7 +394,7 @@ export class RichText extends Component {
 			}
 		}
 
-		const { activeFormats } = this.state;
+		const { activeFormats = [] } = this.state;
 		const { formats, replacements, text, start, end } = this.createRecord();
 
 		if ( activeFormats.length > 0 ) {
@@ -495,7 +495,7 @@ export class RichText extends Component {
 	onChange( record, { withoutHistory } = {} ) {
 		this.applyRecord( record );
 
-		const { start, end, activeFormats } = record;
+		const { start, end, activeFormats = [] } = record;
 
 		this.onChangeEditableValue( record );
 		this.savedContent = this.valueToFormat( record );
@@ -716,7 +716,7 @@ export class RichText extends Component {
 	handleHorizontalNavigation( event ) {
 		const value = this.createRecord();
 		const { formats, text, start, end } = value;
-		const { activeFormats } = this.state;
+		const { activeFormats = [] } = this.state;
 		const collapsed = isCollapsed( value );
 		const isReverse = event.keyCode === LEFT;
 
