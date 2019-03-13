@@ -113,23 +113,9 @@ is no format at the selection.
 
 `(Object|undefined)`: Active format object of the specified type, or undefined.
 
-### getActiveFormats
-
-[src/index.js#L11-L11](src/index.js#L11-L11)
-
-Gets the all format objects at the start of the selection.
-
-**Parameters**
-
--   **value** `Object`: Value to inspect.
-
-**Returns**
-
-`?Object`: Active format objects.
-
 ### getActiveObject
 
-[src/index.js#L12-L12](src/index.js#L12-L12)
+[src/index.js#L11-L11](src/index.js#L11-L11)
 
 Gets the active object, if there is any.
 
@@ -143,7 +129,7 @@ Gets the active object, if there is any.
 
 ### getTextContent
 
-[src/index.js#L15-L15](src/index.js#L15-L15)
+[src/index.js#L14-L14](src/index.js#L14-L14)
 
 Get the textual content of a Rich Text value. This is similar to
 `Element.textContent`.
@@ -158,7 +144,7 @@ Get the textual content of a Rich Text value. This is similar to
 
 ### insert
 
-[src/index.js#L23-L23](src/index.js#L23-L23)
+[src/index.js#L22-L22](src/index.js#L22-L22)
 
 Insert a Rich Text value, an HTML string, or a plain text string, into a
 Rich Text value at the given `startIndex`. Any content between `startIndex`
@@ -178,7 +164,7 @@ none are provided.
 
 ### insertObject
 
-[src/index.js#L26-L26](src/index.js#L26-L26)
+[src/index.js#L25-L25](src/index.js#L25-L25)
 
 Insert a format as an object into a Rich Text value at the given
 `startIndex`. Any content between `startIndex` and `endIndex` will be
@@ -197,7 +183,7 @@ removed. Indices are retrieved from the selection if none are provided.
 
 ### isCollapsed
 
-[src/index.js#L16-L16](src/index.js#L16-L16)
+[src/index.js#L15-L15](src/index.js#L15-L15)
 
 Check if the selection of a Rich Text value is collapsed or not. Collapsed
 means that no characters are selected, but there is a caret present. If there
@@ -214,7 +200,7 @@ is no selection, `undefined` will be returned. This is similar to
 
 ### isEmpty
 
-[src/index.js#L17-L17](src/index.js#L17-L17)
+[src/index.js#L16-L16](src/index.js#L16-L16)
 
 Check if a Rich Text value is Empty, meaning it contains no text or any
 objects (such as images).
@@ -229,7 +215,7 @@ objects (such as images).
 
 ### join
 
-[src/index.js#L18-L18](src/index.js#L18-L18)
+[src/index.js#L17-L17](src/index.js#L17-L17)
 
 Combine an array of Rich Text values into one, optionally separated by
 `separator`, which can be a Rich Text value, HTML string, or plain text
@@ -246,7 +232,7 @@ string. This is similar to `Array.prototype.join`.
 
 ### registerFormatType
 
-[src/index.js#L19-L19](src/index.js#L19-L19)
+[src/index.js#L18-L18](src/index.js#L18-L18)
 
 Registers a new format provided a unique name and an object defining its
 behavior.
@@ -266,7 +252,7 @@ behavior.
 
 ### remove
 
-[src/index.js#L21-L21](src/index.js#L21-L21)
+[src/index.js#L20-L20](src/index.js#L20-L20)
 
 Remove content from a Rich Text value between the given `startIndex` and
 `endIndex`. Indices are retrieved from the selection if none are provided.
@@ -283,7 +269,7 @@ Remove content from a Rich Text value between the given `startIndex` and
 
 ### removeFormat
 
-[src/index.js#L20-L20](src/index.js#L20-L20)
+[src/index.js#L19-L19](src/index.js#L19-L19)
 
 Remove any format object from a Rich Text value by type from the given
 `startIndex` to the given `endIndex`. Indices are retrieved from the
@@ -302,7 +288,7 @@ selection if none are provided.
 
 ### replace
 
-[src/index.js#L22-L22](src/index.js#L22-L22)
+[src/index.js#L21-L21](src/index.js#L21-L21)
 
 Search a Rich Text value and replace the match(es) with `replacement`. This
 is similar to `String.prototype.replace`.
@@ -319,7 +305,7 @@ is similar to `String.prototype.replace`.
 
 ### slice
 
-[src/index.js#L27-L27](src/index.js#L27-L27)
+[src/index.js#L26-L26](src/index.js#L26-L26)
 
 Slice a Rich Text value from `startIndex` to `endIndex`. Indices are
 retrieved from the selection if none are provided. This is similar to
@@ -337,7 +323,7 @@ retrieved from the selection if none are provided. This is similar to
 
 ### split
 
-[src/index.js#L28-L28](src/index.js#L28-L28)
+[src/index.js#L27-L27](src/index.js#L27-L27)
 
 Split a Rich Text value in two at the given `startIndex` and `endIndex`, or
 split at the given separator. This is similar to `String.prototype.split`.
@@ -355,7 +341,7 @@ Indices are retrieved from the selection if none are provided.
 
 ### toggleFormat
 
-[src/index.js#L31-L31](src/index.js#L31-L31)
+[src/index.js#L30-L30](src/index.js#L30-L30)
 
 Toggles a format object to a Rich Text value at the current selection.
 
@@ -370,7 +356,7 @@ Toggles a format object to a Rich Text value at the current selection.
 
 ### toHTMLString
 
-[src/index.js#L30-L30](src/index.js#L30-L30)
+[src/index.js#L29-L29](src/index.js#L29-L29)
 
 Create an HTML string from a Rich Text value. If a `multilineTag` is
 provided, text separated by a line separator will be wrapped in it.
@@ -387,7 +373,7 @@ provided, text separated by a line separator will be wrapped in it.
 
 ### unregisterFormatType
 
-[src/index.js#L33-L33](src/index.js#L33-L33)
+[src/index.js#L32-L32](src/index.js#L32-L32)
 
 Unregisters a format.
 

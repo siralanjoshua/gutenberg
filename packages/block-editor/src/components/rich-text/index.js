@@ -42,7 +42,7 @@ import {
 	isCollapsed,
 	LINE_SEPARATOR,
 	indentListItems,
-	getActiveFormats,
+	__unstableGetActiveFormats,
 	__unstableIsFormatEqual,
 } from '@wordpress/rich-text';
 import { decodeEntities } from '@wordpress/html-entities';
@@ -470,7 +470,7 @@ export class RichText extends Component {
 
 		if ( start !== this.state.start || end !== this.state.end ) {
 			const { isCaretWithinFormattedText } = this.props;
-			const activeFormats = getActiveFormats( value );
+			const activeFormats = __unstableGetActiveFormats( value );
 
 			if ( ! isCaretWithinFormattedText && activeFormats.length ) {
 				this.props.onEnterFormattedText();
