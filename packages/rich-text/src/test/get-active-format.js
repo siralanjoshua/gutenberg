@@ -12,19 +12,18 @@ describe( 'getActiveFormat', () => {
 			formats: [ [ em ], , , ],
 			text: 'one',
 			start: 0,
-			end: 0,
+			end: 1,
 		};
 
 		expect( getActiveFormat( record, 'em' ) ).toEqual( em );
 	} );
 
-	it( 'should not get any format if outside boundary position', () => {
+	it( 'should not get any format if at the boundary', () => {
 		const record = {
 			formats: [ [ em ], , [ em ] ],
 			text: 'one',
 			start: 1,
 			end: 1,
-			activeFormats: [],
 		};
 
 		expect( getActiveFormat( record, 'em' ) ).toBe( undefined );
@@ -32,11 +31,10 @@ describe( 'getActiveFormat', () => {
 
 	it( 'should get format if inside boundary position', () => {
 		const record = {
-			formats: [ [ em ], , [ em ] ],
+			formats: [ [ em ], [ em ], [ em ] ],
 			text: 'one',
 			start: 1,
 			end: 1,
-			activeFormats: [ em ],
 		};
 
 		expect( getActiveFormat( record, 'em' ) ).toBe( em );

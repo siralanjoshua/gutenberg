@@ -42,6 +42,7 @@ import {
 	isCollapsed,
 	LINE_SEPARATOR,
 	indentListItems,
+	getActiveFormats,
 	__unstableNormaliseFormats,
 } from '@wordpress/rich-text';
 import { decodeEntities } from '@wordpress/html-entities';
@@ -442,28 +443,16 @@ export class RichText extends Component {
 		}
 
 		const value = this.createRecord();
-		const { start, end, formats } = value;
+		const { start, end } = value;
 
 		if ( start !== this.state.start || end !== this.state.end ) {
-			const isCaretWithinFormattedText = this.props.isCaretWithinFormattedText;
+			const { isCaretWithinFormattedText } = this.props;
+			const activeFormats = getActiveFormats( value );
 
-			if ( ! isCaretWithinFormattedText && formats[ start ] ) {
+			if ( ! isCaretWithinFormattedText && activeFormats.length ) {
 				this.props.onEnterFormattedText();
-			} else if ( isCaretWithinFormattedText && ! formats[ start ] ) {
+			} else if ( isCaretWithinFormattedText && ! activeFormats.length ) {
 				this.props.onExitFormattedText();
-			}
-
-			let activeFormats = [];
-
-			if ( isCollapsed( value ) ) {
-				const formatsBefore = formats[ start - 1 ] || [];
-				const formatsAfter = formats[ start ] || [];
-
-				activeFormats = formatsAfter;
-
-				if ( formatsBefore.length < formatsAfter.length ) {
-					activeFormats = formatsBefore;
-				}
 			}
 
 			this.setState( { start, end, activeFormats } );
