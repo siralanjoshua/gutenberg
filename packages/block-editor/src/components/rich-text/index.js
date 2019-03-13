@@ -437,11 +437,6 @@ export class RichText extends Component {
 	 * Handles the `selectionchange` event: sync the selection to local state.
 	 */
 	onSelectionChange() {
-		if ( this.ignoreSelectionChange ) {
-			delete this.ignoreSelectionChange;
-			return;
-		}
-
 		const value = this.createRecord();
 		const { start, end } = value;
 
@@ -732,10 +727,6 @@ export class RichText extends Component {
 
 		// In all other cases, prevent default behaviour.
 		event.preventDefault();
-
-		// Ignore the selection change handler when setting selection, all state
-		// will be set here.
-		this.ignoreSelectionChange = true;
 
 		const formatsBefore = formats[ start - 1 ] || [];
 		const formatsAfter = formats[ start ] || [];
