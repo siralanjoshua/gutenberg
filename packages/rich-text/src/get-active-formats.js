@@ -5,19 +5,21 @@
  *
  * @return {?Object} Active format objects.
  */
-export function getActiveFormats( { formats, start, selectedFormat } ) {
+export function getActiveFormats( { formats, start, activeFormats } ) {
 	if ( start === undefined ) {
 		return [];
+	}
+
+	if ( activeFormats ) {
+		return activeFormats;
 	}
 
 	const formatsBefore = formats[ start - 1 ] || [];
 	const formatsAfter = formats[ start ] || [];
 
-	let source = formatsAfter;
-
 	if ( formatsBefore.length > formatsAfter.length ) {
-		source = formatsBefore;
+		return formatsBefore;
 	}
 
-	return source.slice( 0, selectedFormat );
+	return formatsAfter;
 }

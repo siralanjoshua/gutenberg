@@ -42,6 +42,7 @@ import {
 	isCollapsed,
 	LINE_SEPARATOR,
 	indentListItems,
+	__unstableNormaliseFormats,
 } from '@wordpress/rich-text';
 import { decodeEntities } from '@wordpress/html-entities';
 import { withFilters, IsolatedEventContainer } from '@wordpress/components';
@@ -176,9 +177,9 @@ export class RichText extends Component {
 	 */
 	getRecord() {
 		const { formats, replacements, text } = this.formatToValue( this.props.value );
-		const { start, end, selectedFormat } = this.state;
+		const { start, end, activeFormats } = this.state;
 
-		return { formats, replacements, text, start, end, selectedFormat };
+		return { formats, replacements, text, start, end, activeFormats };
 	}
 
 	createRecord() {
@@ -393,35 +394,16 @@ export class RichText extends Component {
 			}
 		}
 
-		let { selectedFormat } = this.state;
+		const { activeFormats } = this.state;
 		const { formats, replacements, text, start, end } = this.createRecord();
 
-		if ( this.formatPlaceholder ) {
-			selectedFormat = this.formatPlaceholder.length;
-
-			if ( selectedFormat > 0 ) {
-				formats[ this.state.start ] = this.formatPlaceholder;
-			} else {
-				delete formats[ this.state.start ];
-			}
-		} else if ( selectedFormat > 0 ) {
-			const formatsBefore = formats[ start - 1 ] || [];
-			const formatsAfter = formats[ start ] || [];
-
-			let source = formatsBefore;
-
-			if ( formatsAfter.length > formatsBefore.length ) {
-				source = formatsAfter;
-			}
-
-			source = source.slice( 0, selectedFormat );
-
-			formats[ this.state.start ] = source;
+		if ( activeFormats.length > 0 ) {
+			formats[ this.state.start ] = activeFormats;
 		} else {
 			delete formats[ this.state.start ];
 		}
 
-		const change = { formats, replacements, text, start, end, selectedFormat };
+		const change = __unstableNormaliseFormats( { formats, replacements, text, start, end, activeFormats } );
 
 		this.onChange( change, {
 			withoutHistory: true,
@@ -434,7 +416,7 @@ export class RichText extends Component {
 
 		if ( transformed !== change ) {
 			this.onCreateUndoLevel();
-			this.onChange( { ...transformed, selectedFormat } );
+			this.onChange( { ...transformed, activeFormats } );
 		}
 
 		// Create an undo level when input stops for over a second.
@@ -471,19 +453,21 @@ export class RichText extends Component {
 				this.props.onExitFormattedText();
 			}
 
-			let selectedFormat;
+			let activeFormats = [];
 
 			if ( isCollapsed( value ) ) {
 				const formatsBefore = formats[ start - 1 ] || [];
 				const formatsAfter = formats[ start ] || [];
 
-				selectedFormat = Math.min( formatsBefore.length, formatsAfter.length );
+				activeFormats = formatsAfter;
+
+				if ( formatsBefore.length < formatsAfter.length ) {
+					activeFormats = formatsBefore;
+				}
 			}
 
-			this.setState( { start, end, selectedFormat } );
-			this.applyRecord( { ...value, selectedFormat }, { domOnly: true } );
-
-			delete this.formatPlaceholder;
+			this.setState( { start, end, activeFormats } );
+			this.applyRecord( { ...value, activeFormats }, { domOnly: true } );
 		}
 	}
 
@@ -511,14 +495,12 @@ export class RichText extends Component {
 	onChange( record, { withoutHistory } = {} ) {
 		this.applyRecord( record );
 
-		const { start, end, formatPlaceholder, selectedFormat } = record;
+		const { start, end, activeFormats } = record;
 
-		this.formatPlaceholder = formatPlaceholder;
 		this.onChangeEditableValue( record );
-
 		this.savedContent = this.valueToFormat( record );
 		this.props.onChange( this.savedContent );
-		this.setState( { start, end, selectedFormat } );
+		this.setState( { start, end, activeFormats } );
 
 		if ( ! withoutHistory ) {
 			this.onCreateUndoLevel();
@@ -734,17 +716,15 @@ export class RichText extends Component {
 	handleHorizontalNavigation( event ) {
 		const value = this.createRecord();
 		const { formats, text, start, end } = value;
-		const { selectedFormat } = this.state;
+		const { activeFormats } = this.state;
 		const collapsed = isCollapsed( value );
 		const isReverse = event.keyCode === LEFT;
-
-		delete this.formatPlaceholder;
 
 		// If the selection is collapsed and at the very start, do nothing if
 		// navigating backward.
 		// If the selection is collapsed and at the very end, do nothing if
 		// navigating forward.
-		if ( collapsed && selectedFormat === 0 ) {
+		if ( collapsed && activeFormats.length === 0 ) {
 			if ( start === 0 && isReverse ) {
 				return;
 			}
@@ -771,31 +751,37 @@ export class RichText extends Component {
 		const formatsBefore = formats[ start - 1 ] || [];
 		const formatsAfter = formats[ start ] || [];
 
-		let newSelectedFormat = selectedFormat;
+		let newActiveFormatsLength = activeFormats.length;
+		let source = formatsAfter;
+
+		if ( formatsBefore.length > formatsAfter.length ) {
+			source = formatsBefore;
+		}
 
 		// If the amount of formats before the caret and after the caret is
 		// different, the caret is at a format boundary.
 		if ( formatsBefore.length < formatsAfter.length ) {
-			if ( ! isReverse && selectedFormat < formatsAfter.length ) {
-				newSelectedFormat++;
+			if ( ! isReverse && activeFormats.length < formatsAfter.length ) {
+				newActiveFormatsLength++;
 			}
 
-			if ( isReverse && selectedFormat > formatsBefore.length ) {
-				newSelectedFormat--;
+			if ( isReverse && activeFormats.length > formatsBefore.length ) {
+				newActiveFormatsLength--;
 			}
 		} else if ( formatsBefore.length > formatsAfter.length ) {
-			if ( ! isReverse && selectedFormat > formatsAfter.length ) {
-				newSelectedFormat--;
+			if ( ! isReverse && activeFormats.length > formatsAfter.length ) {
+				newActiveFormatsLength--;
 			}
 
-			if ( isReverse && selectedFormat < formatsBefore.length ) {
-				newSelectedFormat++;
+			if ( isReverse && activeFormats.length < formatsBefore.length ) {
+				newActiveFormatsLength++;
 			}
 		}
 
-		if ( newSelectedFormat !== selectedFormat ) {
-			this.applyRecord( { ...value, selectedFormat: newSelectedFormat } );
-			this.setState( { selectedFormat: newSelectedFormat } );
+		if ( newActiveFormatsLength !== activeFormats.length ) {
+			const newActiveFormats = source.slice( 0, newActiveFormatsLength );
+			this.applyRecord( { ...value, activeFormats: newActiveFormats } );
+			this.setState( { activeFormats: newActiveFormats } );
 			return;
 		}
 
@@ -806,7 +792,7 @@ export class RichText extends Component {
 			...value,
 			start: newPos,
 			end: newPos,
-			selectedFormat: isReverse ? formatsBefore.length : formatsAfter.length,
+			activeFormats: isReverse ? formatsBefore : formatsAfter,
 		} );
 	}
 

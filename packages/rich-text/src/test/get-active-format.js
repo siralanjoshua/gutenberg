@@ -24,7 +24,7 @@ describe( 'getActiveFormat', () => {
 			text: 'one',
 			start: 1,
 			end: 1,
-			selectedFormat: 0,
+			activeFormats: [],
 		};
 
 		expect( getActiveFormat( record, 'em' ) ).toBe( undefined );
@@ -36,7 +36,7 @@ describe( 'getActiveFormat', () => {
 			text: 'one',
 			start: 1,
 			end: 1,
-			selectedFormat: 1,
+			activeFormats: [ em ],
 		};
 
 		expect( getActiveFormat( record, 'em' ) ).toBe( em );

@@ -71,13 +71,12 @@ function fromFormat( { type, attributes, unregisteredAttributes, object, boundar
 
 function getDeepestActiveFormat( value ) {
 	const activeFormats = getActiveFormats( value );
-	const { selectedFormat } = value;
 
-	if ( selectedFormat === undefined ) {
-		return activeFormats[ activeFormats.length - 1 ];
+	if ( ! activeFormats ) {
+		return;
 	}
 
-	return activeFormats[ selectedFormat - 1 ];
+	return activeFormats[ activeFormats.length - 1 ];
 }
 
 const padding = {
