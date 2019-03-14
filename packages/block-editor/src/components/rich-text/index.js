@@ -85,8 +85,8 @@ const INSERTION_INPUT_TYPES_TO_IGNORE = new Set( [
 ] );
 
 function correctInputFormats( { value, activeFormats, start, end } ) {
-	const formatsBefore = value.formats[ start - 1 ];
-	const formatsAfter = value.formats[ end ];
+	const formatsBefore = value.formats[ start - 1 ] || [];
+	const formatsAfter = value.formats[ end ] || [];
 
 	// Ensure active format array uses correct references. `correctInputFormats`
 	// is called very often, so we don't want to call `normaliseFormats` here.
