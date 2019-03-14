@@ -29,7 +29,7 @@ export function removeFormat(
 	endIndex = value.end
 ) {
 	const { formats, activeFormats } = value;
-	const newFormats = formats.slice( 0 );
+	const newFormats = formats.slice();
 
 	// If the selection is collapsed, expand start and end to the edges of the
 	// format.

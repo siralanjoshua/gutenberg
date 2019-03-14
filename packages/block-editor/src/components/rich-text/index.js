@@ -43,7 +43,7 @@ import {
 	LINE_SEPARATOR,
 	indentListItems,
 	__unstableGetActiveFormats,
-	__unstableIsFormatEqual,
+	__unstableUpdateFormats,
 } from '@wordpress/rich-text';
 import { decodeEntities } from '@wordpress/html-entities';
 import { withFilters, IsolatedEventContainer } from '@wordpress/components';
@@ -83,39 +83,6 @@ const INSERTION_INPUT_TYPES_TO_IGNORE = new Set( [
 	'insertHorizontalRule',
 	'insertLink',
 ] );
-
-function correctInputFormats( { value, activeFormats, start, end } ) {
-	const formatsBefore = value.formats[ start - 1 ] || [];
-	const formatsAfter = value.formats[ end ] || [];
-
-	// Ensure active format array uses correct references. `correctInputFormats`
-	// is called very often, so we don't want to call `normaliseFormats` here.
-	value.activeFormats = activeFormats.map( ( format, index ) => {
-		if ( formatsBefore[ index ] ) {
-			if ( __unstableIsFormatEqual( format, formatsBefore[ index ] ) ) {
-				return formatsBefore[ index ];
-			}
-		} else if ( formatsAfter[ index ] ) {
-			if ( __unstableIsFormatEqual( format, formatsAfter[ index ] ) ) {
-				return formatsAfter[ index ];
-			}
-		}
-
-		return format;
-	} );
-
-	// It is important to update all inserted characters. E.g. emoji take up
-	// multiple code points.
-	while ( --end >= start ) {
-		if ( activeFormats.length > 0 ) {
-			value.formats[ end ] = value.activeFormats;
-		} else {
-			delete value.formats[ end ];
-		}
-	}
-
-	return value;
-}
 
 export class RichText extends Component {
 	constructor( { value, onReplace, multiline } ) {
@@ -431,11 +398,12 @@ export class RichText extends Component {
 		const value = this.createRecord();
 		const { activeFormats = [], start } = this.state;
 
-		const change = correctInputFormats( {
+		// Update the formats between the last and new caret position.
+		const change = __unstableUpdateFormats( {
 			value,
-			activeFormats,
 			start,
 			end: value.start,
+			formats: activeFormats,
 		} );
 
 		this.onChange( change, { withoutHistory: true } );

@@ -29,7 +29,7 @@ export function applyFormat(
 	endIndex = value.end
 ) {
 	const { formats, activeFormats = [] } = value;
-	const newFormats = formats.slice( 0 );
+	const newFormats = formats.slice();
 
 	// The selection is collapsed.
 	if ( startIndex === endIndex ) {
