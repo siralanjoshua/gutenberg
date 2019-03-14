@@ -104,6 +104,8 @@ function correctInputFormats( { value, activeFormats, start, end } ) {
 		return format;
 	} );
 
+	// It is important to update all inserted characters. E.g. emoji take up
+	// multiple code points.
 	while ( --end >= start ) {
 		if ( activeFormats.length > 0 ) {
 			value.formats[ end ] = value.activeFormats;
