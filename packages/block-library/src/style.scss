@@ -143,6 +143,7 @@
  * Vanilla Block Editor Styles
  * These are base styles that apply across blocks, meant to provide a baseline.
  * They are applied both to the editor, and the theme, so we should have as few of these as possible.
+ * Please note that some styles are stored in packages/editor/src/editor-styles.scss, as they pertain to CSS bleed for the editor only.
  */
 
 // Gutenberg specific elements
@@ -153,7 +154,6 @@
 }
 
 // Apply some base margins to blocks that need them.
-// Please note that some styles are stored in packages/editor/src/editor-styles.scss, as they pertain to CSS bleed for the editor only.
 img {
 	max-width: 100%;
 	height: auto;
