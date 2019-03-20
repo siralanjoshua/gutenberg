@@ -7,7 +7,7 @@ import { View, Text } from 'react-native';
  * WordPress dependencies
  */
 import { Icon } from '@wordpress/components';
-import { coreBlocks } from '@wordpress/block-library';
+import * as coreBlocks from '@wordpress/block-library';
 import { normalizeIconObject } from '@wordpress/blocks';
 import { Component } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
